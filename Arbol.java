@@ -35,8 +35,10 @@ public class Arbol {
            System.out.println("7. Determinar la Altura ");
            System.out.println("8. Determinar número de elementos ");
            System.out.println("9. Buscar un nodo ");
-            System.out.println("10. Comparar igualdad en arboles ");
-           System.out.println("11. exit ");
+           System.out.println("10. Comparar igualdad en arboles ");
+           System.out.println("11. Niveles ");
+           System.out.println("12. Arbol binario o no binario ");
+           System.out.println("13. exit ");
            System.out.println("Escribe una de las opciones:");
            opcion = in.nextInt();
            
@@ -119,9 +121,16 @@ public class Arbol {
                     }else{
                         System.out.println("Diferentes");
                     }
-                   
-                   break;
                 case 11:
+                    System.out.println("Niveles");
+                    System.out.println("Arbol 1");
+                    binaryTree1.mostrar_nivel(binaryTree1.raiz);
+                    System.out.println("Arbol 2");
+                    binaryTree2.mostrar_nivel(binaryTree2.raiz);
+                case 12:
+                   System.out.println("Comparar arboles");
+                   break;
+                case 13:
                    salir=true;
                    System.out.println("Programa terminado");
                    
