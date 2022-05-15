@@ -4,6 +4,9 @@
  */
 package arbol;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 /**
  *
@@ -124,61 +127,61 @@ public class FuncionesArbol {
     }
 
     //Empieza desde el padre
-    public void Preorden(NodoArbol Nodo) {
+    public void preorden(NodoArbol Nodo) {
         if (Nodo == null) {
             return;
         } else {
             System.out.print(Nodo.dato + " ");
-            Preorden(Nodo.hijoIzquierdo);
-            Preorden(Nodo.hijoDerecho);
+            preorden(Nodo.hijoIzquierdo);
+            preorden(Nodo.hijoDerecho);
 
         }
     }
 
     // Empieza desde los hijos
-    public void PostOrden(NodoArbol Nodo) {
+    public void postOrden(NodoArbol Nodo) {
         if (Nodo == null) {
             return;
         } else {
-            Preorden(Nodo.hijoIzquierdo);
-            Preorden(Nodo.hijoDerecho);
+            preorden(Nodo.hijoIzquierdo);
+            preorden(Nodo.hijoDerecho);
             System.out.print(Nodo.dato + " ");
 
         }
     }
 
     // Empieza desde los primeros izquierdos desde abajo para arriba
-    public void Inorden(NodoArbol Nodo) {
+    public void inorden(NodoArbol Nodo) {
         if (Nodo == null) {
             return;
         } else {
-            Inorden(Nodo.hijoIzquierdo);
+            inorden(Nodo.hijoIzquierdo);
             System.out.print(Nodo.dato + " ");
-            Inorden(Nodo.hijoDerecho);
+            inorden(Nodo.hijoDerecho);
 
         }
     }
 
-    public int ObtenerlaRaíz() {
+    public int obtenerlaRaíz() {
         return raiz.dato;
 
     }
 
-    public int Altura(NodoArbol Nodo) {
+    public int altura(NodoArbol Nodo) {
         if (Nodo != null) {
-            return (1 + Math.max(Altura(Nodo.hijoIzquierdo), Altura(Nodo.hijoDerecho)));
+            return (1 + Math.max(altura(Nodo.hijoIzquierdo), altura(Nodo.hijoDerecho)));
         }
         return 0;
     }
 
-    public int Contar(NodoArbol Nodo) {
+    public int contar(NodoArbol Nodo) {
         if (Nodo != null) {
-            return (1 + Contar(Nodo.hijoIzquierdo) + Contar(Nodo.hijoDerecho));
+            return (1 + contar(Nodo.hijoIzquierdo) + contar(Nodo.hijoDerecho));
         }
         return 0;
     }
 
-    public NodoArbol Buscar(int dato) {
+    public NodoArbol buscar(int dato) {
         NodoArbol aux = raiz;
         while (aux.dato != dato) {
             if (dato < aux.dato) {
@@ -221,9 +224,7 @@ public class FuncionesArbol {
         int nivel = 1;
         while(mostrar_nodo(raiz,nivel)){
             nivel++; 
-            break;
         }  
-       
     }
     
     public boolean mostrar_nodo(NodoArbol Nodo,int nivel){
