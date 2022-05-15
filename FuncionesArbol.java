@@ -222,24 +222,25 @@ public class FuncionesArbol {
     }
     public void mostrar_nivel(NodoArbol Nodo){
         int nivel = 1;
-        while(mostrar_nodo(raiz,nivel)){
+        while(mostrar_nodo(Nodo,nivel)){
             nivel++; 
-        }  
+            break;
+        } 
     }
     
     public boolean mostrar_nodo(NodoArbol Nodo,int nivel){
-        if(raiz==null){
+        if(Nodo==null){
             return false;
         
         }
         if(nivel==1){
-            System.out.println(raiz.dato + " "); 
+            System.out.println(Nodo.dato + " "); 
             return true;
         }
         
         boolean izq,der;
-        izq=mostrar_nodo(raiz.hijoIzquierdo,nivel-1);
-        der=mostrar_nodo(raiz.hijoDerecho, nivel-1);
+        izq=mostrar_nodo(Nodo.hijoIzquierdo,nivel-1);
+        der=mostrar_nodo(Nodo.hijoDerecho, nivel-1);
         return izq || der;
   
     }
