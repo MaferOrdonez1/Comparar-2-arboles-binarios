@@ -15,7 +15,6 @@ public class Arbol {
     Scanner in = new Scanner(System.in);
     FuncionesArbol binaryTree1 = new FuncionesArbol();
     FuncionesArbol binaryTree2 = new FuncionesArbol(); 
-    FuncionesArbol resultado = new FuncionesArbol();
     
     public static void main(String[] args) {
         Arbol print = new Arbol();
