@@ -106,6 +106,10 @@ public class FuncionesArbol {
         }
         return true;
     }
+    
+    public boolean estavacia(){
+        return raiz==null;
+    }
 
     public NodoArbol obtenerNodoReemplazo(NodoArbol nodoReemplazo) {
         NodoArbol reemplazarPadre = nodoReemplazo;
@@ -128,37 +132,29 @@ public class FuncionesArbol {
 
     //Empieza desde el padre
     public void preorden(NodoArbol Nodo) {
-        if (Nodo == null) {
-            return;
-        } else {
-            System.out.print(Nodo.dato + " ");
+        if(Nodo!= null){
+            System.out.print(Nodo.dato + ", ");
             preorden(Nodo.hijoIzquierdo);
             preorden(Nodo.hijoDerecho);
-
         }
     }
 
     // Empieza desde los hijos
-    public void postOrden(NodoArbol Nodo) {
-        if (Nodo == null) {
-            return;
-        } else {
-            preorden(Nodo.hijoIzquierdo);
-            preorden(Nodo.hijoDerecho);
-            System.out.print(Nodo.dato + " ");
+    public void postorden(NodoArbol Nodo) {
+         if(Nodo!= null){
+            postorden(Nodo.hijoIzquierdo);
+            postorden(Nodo.hijoDerecho);
+            System.out.print(Nodo.dato + ", ");
 
         }
     }
 
     // Empieza desde los primeros izquierdos desde abajo para arriba
     public void inorden(NodoArbol Nodo) {
-        if (Nodo == null) {
-            return;
-        } else {
+        if(Nodo!= null){
             inorden(Nodo.hijoIzquierdo);
-            System.out.print(Nodo.dato + " ");
+            System.out.print(Nodo.dato + ", ");
             inorden(Nodo.hijoDerecho);
-
         }
     }
 
@@ -220,30 +216,47 @@ public class FuncionesArbol {
 
         return true;
     }
-    public void mostrar_nivel(NodoArbol Nodo){
-        int nivel = 1;
-        while(mostrar_nodo(Nodo,nivel)){
-            nivel++; 
-            break;
-        } 
+    
+    public  void levelOrderTree(NodoArbol Nodo) {
+        if (Nodo == null) {
+            return;
+        }
+        Queue<NodoArbol> queue = new LinkedList<NodoArbol>();// cola
+        queue.offer(Nodo);
+        while (!queue.isEmpty()) {
+
+            NodoArbol root = queue.poll();
+            // contenido de salida
+            System.out.print(root.dato+ ", ");
+            // subárbol izquierdo
+            NodoArbol left = root.hijoIzquierdo;
+            if (left != null) {
+                queue.offer(left);
+            }
+            // subárbol derecho
+            NodoArbol right = root.hijoDerecho;
+            if (right != null) {
+                queue.offer(right);
+            }
+
+        }
     }
     
-    public boolean mostrar_nodo(NodoArbol Nodo,int nivel){
-        if(Nodo==null){
-            return false;
-        
-        }
-        if(nivel==1){
-            System.out.println(Nodo.dato + " "); 
+    public boolean completo(NodoArbol Nodo) {
+        if (Nodo == null) {
             return true;
+        } else {
+            if (((Nodo.hijoDerecho == null && Nodo.hijoIzquierdo != null))
+                    || ((Nodo.hijoDerecho != null && Nodo.hijoIzquierdo == null))) {
+                return false;
+            }
+            boolean m = completo(Nodo.hijoIzquierdo);
+            boolean n = completo(Nodo.hijoDerecho);
+            return (m && n);
         }
-        
-        boolean izq,der;
-        izq=mostrar_nodo(Nodo.hijoIzquierdo,nivel-1);
-        der=mostrar_nodo(Nodo.hijoDerecho, nivel-1);
-        return izq || der;
-  
+
     }
+
 }
 
 
